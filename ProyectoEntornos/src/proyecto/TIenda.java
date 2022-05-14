@@ -13,6 +13,8 @@ public class TIenda {
 		BufferedWriter bw = null;
 		ArrayList<Productos> listaProductos = new ArrayList<Productos>();
 		String linea = "";
+		
+		ficheroInicial();
 
 		try {
 			fr = new FileReader("C:\\test\\productos.csv");
@@ -23,12 +25,7 @@ public class TIenda {
 			while(br.ready()) {
 				
 				linea = br.readLine();
-				
-				// Aqui introducir las listas
-				
-				
-				// Aqui introducir en la listaProductos el contenido de las listas
-												
+																
 			}
 			
 			// Para quitar primera linea del fichero
@@ -63,6 +60,63 @@ public class TIenda {
 				System.out.println("Error al cerrar escritor/lector");
 			}
 			
+		}
+		
+	}
+
+	public static void ficheroInicial() {
+		
+		File directorio = new File("C:\\test");
+		FileWriter fw1 = null;
+		BufferedWriter bw1 = null;
+		
+		if(!directorio.exists()) {
+			directorio.mkdirs();
+		}
+		
+		try {
+			fw1 = new FileWriter("C:\\test\\productos.csv");
+			bw1 = new BufferedWriter(fw1);
+			
+			bw1.write("LOTE;NOMBRE;TIPO;STOCK;FECHA/MATERIAL;PRECIO");
+			bw1.newLine();
+			
+			bw1.write("12121;Juego1;Videojuego;4;2022-01-02;45");
+			bw1.newLine();
+			
+			bw1.write("22414;Juego2;Videojuego;2;2022-05-02;35");
+			bw1.newLine();
+			
+			bw1.write("3331;Manzana;Comida;50;2022-06-22;3");
+			bw1.newLine();
+			
+			bw1.write("4553;Aguacate;Comida;34;2022-07-25;4");
+			bw1.newLine();
+			
+			bw1.write("5643;Estanteria;Mueble;15;Plastico;85");
+			bw1.newLine();
+			
+			bw1.write("6231;Armario;Mueble;4;Madera;350");
+			bw1.newLine();
+		
+		} catch (IOException ex) {
+			System.out.println("Error escritura archivo principal");
+		}
+		
+		finally {
+			try {
+				if(bw1 != null) {
+					bw1.close();
+				}
+				if(fw1 != null) {
+					fw1.close();
+				}
+				
+			} catch (IOException ex) {
+				System.out.println("Error al cerrar escritor");
+				}
+		
+		
 		}
 		
 	}
