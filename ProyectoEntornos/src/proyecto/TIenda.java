@@ -13,6 +13,7 @@ public class TIenda {
 		BufferedWriter bw = null;
 		ArrayList<Productos> listaProductos = new ArrayList<Productos>();
 		ArrayList<Videojuegos> listaVideojuegos = new ArrayList<Videojuegos>();
+		ArrayList<Comida> listaComida = new ArrayList<Comida>();
 		String linea = "";
 		
 		ficheroInicial();
@@ -31,6 +32,11 @@ public class TIenda {
 			
 			// Para quitar primera linea del fichero
 			bw.newLine();
+			
+			for (Productos b : listaComida) {
+				
+				System.out.println(b);
+			}
 			
 			for (Productos l : listaProductos) {
 				System.out.println(l);
