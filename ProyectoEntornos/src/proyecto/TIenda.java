@@ -3,6 +3,8 @@ package proyecto;
 import java.io.*;
 import java.util.ArrayList;
 
+
+
 public class TIenda {
 
 	public static void main(String[] args) {
@@ -12,6 +14,7 @@ public class TIenda {
 		FileWriter fw = null;
 		BufferedWriter bw = null;
 		ArrayList<Productos> listaProductos = new ArrayList<Productos>();
+		ArrayList<Muebles> listaMuebles = new ArrayList<Muebles>();
 		String linea = "";
 		
 		ficheroInicial();
@@ -25,16 +28,21 @@ public class TIenda {
 			while(br.ready()) {
 				
 				linea = br.readLine();
-																
+			
+				// Para quitar primera linea del fichero
+				bw.newLine();
+			
+				if(linea.split(";")[2].equalsIgnoreCase("Mueble")) {
+					listaMuebles.add(new Muebles(linea.toString().split(";")));
+				}
 			}
 			
-			// Para quitar primera linea del fichero
-			bw.newLine();
-			
-			for (Productos l : listaProductos) {
-				System.out.println(l);
+			for (Muebles m : listaMuebles) {
+				System.out.println(m);
 				
 			}
+			
+			ficheroFinal(listaMuebles);
 			
 		} catch (FileNotFoundException ex) {
 			System.out.println("Fichero no encontrado");
@@ -120,5 +128,45 @@ public class TIenda {
 		}
 		
 	}
-
+	
+	public static void ficheroFinal(ArrayList<Muebles> listaM) {
+		
+		FileWriter fw2 = null;
+		BufferedWriter bw2 = null;
+		
+		try {
+			fw2 = new FileWriter("C:\\test\\muebles.csv");
+			bw2 = new BufferedWriter(fw2);
+			
+			bw2.write("LOTE;NOMBRE;TIPO;STOCK;MATERIAL");
+			bw2.newLine();
+			
+			for (Muebles m : listaM) {
+				
+				bw2.write(m.getLote() + ";" + m.getNombre() + ";" + m.getTipo() + ";" + m.getStock() + ";" + m.getMaterial());
+				bw2.newLine();
+				
+			}
+			
+		
+		} catch (IOException ex) {
+			System.out.println("Error escritura archivo principal");
+		}
+		
+		finally {
+			try {
+				if(bw2 != null) {
+					bw2.close();
+				}
+				if(fw2 != null) {
+					fw2.close();
+				}
+				
+			} catch (IOException ex) {
+				System.out.println("Error al cerrar escritor");
+				}
+		
+		
+		}
+	}
 }
