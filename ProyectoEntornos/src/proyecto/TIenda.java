@@ -12,7 +12,6 @@ public class TIenda {
 		FileWriter fw = null;
 		BufferedWriter bw = null;
 		ArrayList<Productos> listaProductos = new ArrayList<Productos>();
-		ArrayList<Videojuegos> listaVideojuegos = new ArrayList<Videojuegos>();
 		String linea = "";
 		
 		ficheroInicial();
@@ -34,11 +33,6 @@ public class TIenda {
 			
 			for (Productos l : listaProductos) {
 				System.out.println(l);
-				
-			}
-			
-			for (Productos v : listaVideojuegos) {
-				System.out.println(v);
 				
 			}
 			
