@@ -12,7 +12,6 @@ public class TIenda {
 		FileWriter fw = null;
 		BufferedWriter bw = null;
 		ArrayList<Productos> listaProductos = new ArrayList<Productos>();
-		ArrayList<Videojuegos> listaVideojuegos = new ArrayList<Videojuegos>();
 		ArrayList<Comida> listaComida = new ArrayList<Comida>();
 		String linea = "";
 		
@@ -43,10 +42,9 @@ public class TIenda {
 				
 			}
 			
-			for (Productos v : listaVideojuegos) {
-				System.out.println(v);
+			
 				
-			}
+			
 			
 		} catch (FileNotFoundException ex) {
 			System.out.println("Fichero no encontrado");
