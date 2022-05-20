@@ -3,6 +3,8 @@ package proyecto;
 import java.io.*;
 import java.util.ArrayList;
 
+
+
 public class TIenda {
 
 	public static void main(String[] args) {
@@ -25,8 +27,12 @@ public class TIenda {
 			
 			while(br.ready()) {
 				
+						
 				linea = br.readLine();
-																
+				
+				if(linea.split(";")[2].equalsIgnoreCase("Mueble")) {
+					listaComida.add(new Comida(linea.toString().split(";")));
+				}
 			}
 			
 			// Para quitar primera linea del fichero
@@ -35,6 +41,8 @@ public class TIenda {
 			for (Productos b : listaComida) {
 				
 				System.out.println(b);
+				bw.write(b.toString());
+				bw.newLine();
 			}
 			
 			for (Productos l : listaProductos) {
