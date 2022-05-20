@@ -22,15 +22,12 @@ public class TIenda {
 		try {
 			fr = new FileReader("C:\\test\\productos.csv");
 			br = new BufferedReader(fr);
-			fw = new FileWriter("C:\\test\\listado.csv");
+			fw = new FileWriter("C:\\test\\muebles.txt");
 			bw = new BufferedWriter(fw);
 			
 			while(br.ready()) {
 				
 				linea = br.readLine();
-			
-				// Para quitar primera linea del fichero
-				bw.newLine();
 			
 				if(linea.split(";")[2].equalsIgnoreCase("Mueble")) {
 					listaMuebles.add(new Muebles(linea.toString().split(";")));
@@ -39,10 +36,10 @@ public class TIenda {
 			
 			for (Muebles m : listaMuebles) {
 				System.out.println(m);
-				
+				bw.write(m.toString());
+				bw.newLine();
 			}
 			
-			ficheroFinal(listaMuebles);
 			
 		} catch (FileNotFoundException ex) {
 			System.out.println("Fichero no encontrado");
@@ -128,45 +125,5 @@ public class TIenda {
 		}
 		
 	}
-	
-	public static void ficheroFinal(ArrayList<Muebles> listaM) {
-		
-		FileWriter fw2 = null;
-		BufferedWriter bw2 = null;
-		
-		try {
-			fw2 = new FileWriter("C:\\test\\muebles.csv");
-			bw2 = new BufferedWriter(fw2);
-			
-			bw2.write("LOTE;NOMBRE;TIPO;STOCK;MATERIAL");
-			bw2.newLine();
-			
-			for (Muebles m : listaM) {
-				
-				bw2.write(m.getLote() + ";" + m.getNombre() + ";" + m.getTipo() + ";" + m.getStock() + ";" + m.getMaterial());
-				bw2.newLine();
-				
-			}
-			
-		
-		} catch (IOException ex) {
-			System.out.println("Error escritura archivo principal");
-		}
-		
-		finally {
-			try {
-				if(bw2 != null) {
-					bw2.close();
-				}
-				if(fw2 != null) {
-					fw2.close();
-				}
-				
-			} catch (IOException ex) {
-				System.out.println("Error al cerrar escritor");
-				}
-		
-		
-		}
-	}
+
 }
