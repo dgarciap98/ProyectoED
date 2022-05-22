@@ -11,6 +11,8 @@ public class TIenda {
 		BufferedReader br = null;
 		FileWriter fw = null;
 		BufferedWriter bw = null;
+		ArrayList<Productos> listaProductos = new ArrayList<Productos>();
+		ArrayList<Videojuegos> listaVideojuegos = new ArrayList<Videojuegos>();
 		String linea = "";
 		
 		ficheroInicial();
@@ -30,6 +32,16 @@ public class TIenda {
 			// Para quitar primera linea del fichero
 			bw.newLine();
 			
+			for (Productos l : listaProductos) {
+				System.out.println(l);
+				
+			}
+			
+			for (Productos v : listaVideojuegos) {
+				System.out.println(v);
+				bw.write(v.toString());
+				
+			}
 			
 		} catch (FileNotFoundException ex) {
 			System.out.println("Fichero no encontrado");
