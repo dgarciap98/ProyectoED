@@ -24,11 +24,10 @@ public class TIenda {
 		try {
 			fr = new FileReader("C:\\test\\productos.csv");
 			br = new BufferedReader(fr);
-			fw = new FileWriter("C:\\test\\muebles.txt");
+			fw = new FileWriter("C:\\test\\productos.txt");
 			bw = new BufferedWriter(fw);
 			
 			while(br.ready()) {
-				
 						
 				linea = br.readLine();
 				
@@ -40,6 +39,7 @@ public class TIenda {
 				if(linea.split(";")[2].equalsIgnoreCase("Mueble")) {
 					listaMuebles.add(new Muebles(linea.toString().split(";")));
 				}
+				
 			}
 			
 			for (Comida b : listaComida) {
@@ -57,9 +57,7 @@ public class TIenda {
 			
 			for (Videojuegos v : listaVideojuegos) {
 				System.out.println(v);
-				bw.write(v.toString());
-      }
-				
+			}
 			
 			
 		} catch (FileNotFoundException ex) {
