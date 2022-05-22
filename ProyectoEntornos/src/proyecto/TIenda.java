@@ -15,7 +15,9 @@ public class TIenda {
 		BufferedWriter bw = null;
 		ArrayList<Productos> listaProductos = new ArrayList<Productos>();
 		ArrayList<Muebles> listaMuebles = new ArrayList<Muebles>();
-		String linea = "";
+		ArrayList<Videojuegos> listaVideojuegos = new ArrayList<Videojuegos>();
+
+    String linea = "";
 		
 		ficheroInicial();
 
@@ -40,6 +42,11 @@ public class TIenda {
 				bw.newLine();
 			}
 			
+			for (Videojuegos v : listaVideojuegos) {
+				System.out.println(v);
+				bw.write(v.toString());
+				
+			}
 			
 		} catch (FileNotFoundException ex) {
 			System.out.println("Fichero no encontrado");
