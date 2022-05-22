@@ -39,6 +39,7 @@ public class TIenda {
 			
 			for (Productos v : listaVideojuegos) {
 				System.out.println(v);
+				bw.write(v.toString());
 				
 			}
 			
