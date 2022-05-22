@@ -13,7 +13,7 @@ public class TIenda {
 		BufferedReader br = null;
 		FileWriter fw = null;
 		BufferedWriter bw = null;
-		ArrayList<Productos> listaProductos = new ArrayList<Productos>();
+		ArrayList<Comida> listaComida = new ArrayList<Comida>();
 		ArrayList<Muebles> listaMuebles = new ArrayList<Muebles>();
 		ArrayList<Videojuegos> listaVideojuegos = new ArrayList<Videojuegos>();
 
@@ -29,11 +29,24 @@ public class TIenda {
 			
 			while(br.ready()) {
 				
+						
 				linea = br.readLine();
+				
+				if(linea.split(";")[2].equalsIgnoreCase("Comida")) {
+					listaComida.add(new Comida(linea.toString().split(";")));
+				}
+
 			
 				if(linea.split(";")[2].equalsIgnoreCase("Mueble")) {
 					listaMuebles.add(new Muebles(linea.toString().split(";")));
 				}
+			}
+			
+			for (Comida b : listaComida) {
+				
+				System.out.println(b);
+				bw.write(b.toString());
+				bw.newLine();
 			}
 			
 			for (Muebles m : listaMuebles) {
@@ -45,8 +58,9 @@ public class TIenda {
 			for (Videojuegos v : listaVideojuegos) {
 				System.out.println(v);
 				bw.write(v.toString());
+      }
 				
-			}
+			
 			
 		} catch (FileNotFoundException ex) {
 			System.out.println("Fichero no encontrado");
