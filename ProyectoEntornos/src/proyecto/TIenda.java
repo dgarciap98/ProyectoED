@@ -3,6 +3,8 @@ package proyecto;
 import java.io.*;
 import java.util.ArrayList;
 
+
+
 public class TIenda {
 
 	public static void main(String[] args) {
@@ -12,32 +14,35 @@ public class TIenda {
 		FileWriter fw = null;
 		BufferedWriter bw = null;
 		ArrayList<Productos> listaProductos = new ArrayList<Productos>();
+		ArrayList<Muebles> listaMuebles = new ArrayList<Muebles>();
 		ArrayList<Videojuegos> listaVideojuegos = new ArrayList<Videojuegos>();
-		String linea = "";
+
+    String linea = "";
 		
 		ficheroInicial();
 
 		try {
 			fr = new FileReader("C:\\test\\productos.csv");
 			br = new BufferedReader(fr);
-			fw = new FileWriter("C:\\test\\listado.csv");
+			fw = new FileWriter("C:\\test\\muebles.txt");
 			bw = new BufferedWriter(fw);
 			
 			while(br.ready()) {
 				
 				linea = br.readLine();
-																
+			
+				if(linea.split(";")[2].equalsIgnoreCase("Mueble")) {
+					listaMuebles.add(new Muebles(linea.toString().split(";")));
+				}
 			}
 			
-			// Para quitar primera linea del fichero
-			bw.newLine();
-			
-			for (Productos l : listaProductos) {
-				System.out.println(l);
-				
+			for (Muebles m : listaMuebles) {
+				System.out.println(m);
+				bw.write(m.toString());
+				bw.newLine();
 			}
 			
-			for (Productos v : listaVideojuegos) {
+			for (Videojuegos v : listaVideojuegos) {
 				System.out.println(v);
 				bw.write(v.toString());
 				
