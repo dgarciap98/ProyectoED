@@ -16,6 +16,15 @@ public class Videojuegos extends Productos {
 	super(lote, nombre, tipo, stock);
 	this.publicacion = publicacion;
 	}
+	
+	public Videojuegos (String[] lista) {
+		
+		this.lote = Integer.parseInt(lista[0]);
+		this.nombre = lista[1];
+		this.tipo = lista[2];
+		this.stock = Integer.parseInt(lista[3]);
+		this.publicacion= LocalDate.parse(lista[4]);
+	}
 
 	public LocalDate getPublicacion() {
 		return publicacion;
@@ -28,7 +37,7 @@ public class Videojuegos extends Productos {
 	
 public String toString() {
 		
-		return  super.toString() + " \n  Fecha de Publicación: " + getPublicacion();
+		return  super.toString() + " \n  Fecha de PublicaciÃ³n: " + getPublicacion();
 	}
 
 	
