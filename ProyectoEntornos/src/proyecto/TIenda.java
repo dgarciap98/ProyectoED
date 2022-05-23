@@ -40,6 +40,10 @@ public class TIenda {
 					listaMuebles.add(new Muebles(linea.toString().split(";")));
 				}
 				
+				if(linea.split(";")[2].equalsIgnoreCase("Videojuego")) {
+					listaVideojuegos.add(new Videojuegos(linea.toString().split(";")));
+				}
+				
 			}
 			
 			for (Comida b : listaComida) {
@@ -57,8 +61,10 @@ public class TIenda {
 			
 			for (Videojuegos v : listaVideojuegos) {
 				System.out.println(v);
+				bw.write(v.toString());
+				bw.newLine();
 			}
-			
+		}	
 			
 		} catch (FileNotFoundException ex) {
 			System.out.println("Fichero no encontrado");
